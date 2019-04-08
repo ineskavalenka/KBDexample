@@ -22,7 +22,7 @@
  * SOFTWARE.
  * 
  */
-
+#if defined(Q_OS_LINUX)
 #ifndef _KEYPAD_H_
 #define _KEYPAD_H_
 
@@ -64,4 +64,5 @@ public:
 	void printDetails(void);
 };
 
+#endif
 #endif

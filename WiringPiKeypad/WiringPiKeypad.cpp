@@ -22,7 +22,7 @@
  * SOFTWARE.
  * 
  */
-
+#if defined(Q_OS_LINUX)
 #include "WiringPiKeypad.h"
 
 /**
@@ -236,3 +236,4 @@ void WiringPiKeypad::printDetails(void)
 	std::cout << "Debounce delay:\t" << debounceDelay << std::endl;
 	std::cout << "Polling delay:\t" << pollingDelay << std::endl;
 }
+#endif

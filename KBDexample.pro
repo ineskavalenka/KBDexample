@@ -34,8 +34,10 @@ HEADERS  += mainwindow.h \
 
 FORMS    += mainwindow.ui
 
+Q_OS_LINUX {
 # So wiringPi include files can be found during compile
 INCLUDEPATH    += /usr/local/include
 
 # To link the wiringPi library when making the executable
 LIBS += -L/usr/local/lib -lwiringPi
+}
