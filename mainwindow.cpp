@@ -8,8 +8,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
-    #if defined(Q_OS_LINUX)
+#if defined(Q_OS_LINUX)
     wiringPiSetup();
     WiringPiKeypad kbrd(8,2);
 
@@ -22,11 +21,24 @@ MainWindow::MainWindow(QWidget *parent) :
     for(;;){    auto key = kbrd.getRawKey();
     QString info = "column: " + QString::number(key.column) + "; row: " + QString::number(key.row);
     qDebug()<< info;
-    }
-    #endif
+#endif
+
+  //  kbd = new KBDOperator(this);
+  //  connect(kbd, SIGNAL(kbdsignal(int)), this, SLOT(kbdSlot(int)));
+
+       connect(kbd, SIGNAL(KeyPress(Qt::Key)), this, SLOT(OnKeyPressed(Qt::Key)));
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+void MainWindow::OnKeyPressed(Qt::Key key)
+{
+  //  QString info = "column: " + QString::number(key.column) + "; row: " + QString::number(key.row);
+    qDebug()<< "key catched";
+}
+
+
+
